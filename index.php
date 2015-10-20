@@ -2,7 +2,7 @@
 
 if (!defined('SESSION_DATA_KEY'))
 {
-    define('SESSION_DATA_KEY', 'form_validation_errors');
+    define('SESSION_DATA_KEY', 'validation.errors');
 }
 
 require_once 'src/Validator.php';

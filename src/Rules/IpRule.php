@@ -4,10 +4,19 @@
  * Class IpRule
  *
  */
-class IpRule implements RuleInterface {
+class IpRule implements RuleInterface
+{
+    /**
+     * @var null
+     */
+    protected $field   = NULL;
 
-    protected $field = null;
-    protected $message = null;
+    /**
+     * holds the error message to be returned
+     *
+     * @var null
+     */
+    protected $message = NULL;
 
     /**
      * @param $field
@@ -16,10 +25,12 @@ class IpRule implements RuleInterface {
      *
      * @return mixed
      */
-    public function run( $field, $value, $message = null ) {
-        $this->field = $field;
+    public function run($field, $value, $message = NULL)
+    {
+        $this->field   = $field;
         $this->message = $message;
-        return filter_var( $value, FILTER_VALIDATE_IP ) !== false;
+
+        return filter_var($value, FILTER_VALIDATE_IP) !== FALSE;
     }
 
     /**
@@ -27,11 +38,15 @@ class IpRule implements RuleInterface {
      *
      * @return mixed
      */
-    public function message() {
-        if($this->message) {
+    public function message()
+    {
+        if ($this->message)
+        {
             return $this->message;
         }
-
-        return $this->field . " must contain a valid IP address";
+        else
+        {
+            return $this->field.' must contain a valid IP address';
+        }
     }
 }

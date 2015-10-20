@@ -4,20 +4,19 @@
  * Class UrlRule
  *
  */
-
 class UrlRule implements RuleInterface
 {
     /**
      * @var null
      */
-    protected $field = null;
+    protected $field   = NULL;
 
     /**
      * holds the error message to be returned
      *
      * @var null
      */
-    protected $message = null;
+    protected $message = NULL;
 
     /**
      * @param $field
@@ -26,11 +25,12 @@ class UrlRule implements RuleInterface
      *
      * @return mixed
      */
-    public function run( $field, $value, $message = null ) {
+    public function run($field, $value, $message = NULL)
+    {
         $this->field   = $field;
         $this->message = $message;
 
-        return filter_var( $value, FILTER_VALIDATE_URL ) !== false;
+        return filter_var($value, FILTER_VALIDATE_URL) !== FALSE;
     }
 
     /**
@@ -38,11 +38,15 @@ class UrlRule implements RuleInterface
      *
      * @return mixed
      */
-    public function message() {
-        if ( $this->message ) {
+    public function message()
+    {
+        if ($this->message)
+        {
             return $this->message;
         }
-
-        return $this->field . " must be a valid URL";
+        else
+        {
+            return $this->field.' must be a valid URL';
+        }
     }
 }

@@ -6,7 +6,6 @@
  */
 class NumRule implements RuleInterface
 {
-
     /**
      * @var string
      */
@@ -16,13 +15,13 @@ class NumRule implements RuleInterface
      * field label eg. Price
      * @var null
      */
-    protected $field = null;
+    protected $field   = NULL;
 
     /**
      * holds the error message to be returned
      * @var null
      */
-    protected $message = null;
+    protected $message = NULL;
 
     /**
      * @param $field
@@ -31,14 +30,19 @@ class NumRule implements RuleInterface
      *
      * @return mixed
      */
-    public function run( $field, $value, $message = null ) {
+    public function run($field, $value, $message = NULL)
+    {
         $this->field   = $field;
         $this->message = $message;
-        if ( preg_match( $this->pattern, $value ) ) {
-            return true;
-        }
 
-        return false;
+        if (preg_match($this->pattern, $value))
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
 
     /**
@@ -46,10 +50,15 @@ class NumRule implements RuleInterface
      *
      * @return mixed
      */
-    public function message() {
-        if($this->message) {
+    public function message()
+    {
+        if ($this->message)
+        {
             return $this->message;
         }
-        return $this->field . " must be numeric";
+        else
+        {
+            return $this->field.' must be numeric';
+        }
     }
 }

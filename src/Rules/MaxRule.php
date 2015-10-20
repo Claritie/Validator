@@ -4,31 +4,28 @@
  * Class MaxRule
  *
  */
-
-
 class MaxRule implements RuleInterface
 {
-
     /**
      * Field label
      *
      * @var null
      */
-    protected $field = null;
+    protected $field   = NULL;
 
     /**
      * the error message to be returned
      *
      * @var null
      */
-    protected $message = null;
+    protected $message = NULL;
 
     /**
      * length to be compared
      *
      * @var null
      */
-    private $length = null;
+    private $length    = NULL;
 
     /**
      * @param $field
@@ -38,18 +35,24 @@ class MaxRule implements RuleInterface
      * @return bool|mixed
      * @throws Exception
      */
-    public function run( $field, $value, $message = null ) {
+    public function run($field, $value, $message = NULL)
+    {
         $this->field   = $field;
         $this->message = $message;
-        if ( $this->length ) {
-            if ( strlen( $value ) <= $this->length ) {
-                return true;
+
+        if ($this->length)
+        {
+            if (strlen($value) <= $this->length)
+            {
+                return TRUE;
             }
-        } else {
-            throw new Exception( "Length must be set before running the validation" );
+        }
+        else
+        {
+            throw new Exception('Length must be set before running the validation');
         }
 
-        return false;
+        return FALSE;
     }
 
     /**
@@ -57,12 +60,16 @@ class MaxRule implements RuleInterface
      *
      * @return mixed
      */
-    public function message() {
-        if ( $this->message ) {
+    public function message()
+    {
+        if ($this->message)
+        {
             return $this->message;
         }
-
-        return $this->field . " must be less than  " . $this->length . " characters";
+        else
+        {
+            return $this->field.'must be less than '.$this->length.' characters';
+        }
     }
 
     /**
@@ -70,8 +77,8 @@ class MaxRule implements RuleInterface
      *
      * @param $length
      */
-    public function setLength( $length ) {
+    public function setLength($length)
+    {
         $this->length = $length;
     }
-
 }

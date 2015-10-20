@@ -6,35 +6,35 @@
  * Class SameRule
  *
  */
-class SameRule implements RuleInterface {
-
+class SameRule implements RuleInterface
+{
     /**
      * Holds the fields array
      *
      * @var null
      */
-    private $fields = null;
+    private $fields    = NULL;
 
     /**
      * the field key to be compared
      *
      * @var null
      */
-    private $fieldKey = null;
+    private $fieldKey  = NULL;
 
     /**
      * Field Label
      *
      * @var null
      */
-    protected $field = null;
+    protected $field   = NULL;
 
     /**
      * the error message to be returned if validation fails.
      *
      * @var null
      */
-    protected $message = null;
+    protected $message = NULL;
 
     /**
      * @param $field
@@ -43,20 +43,22 @@ class SameRule implements RuleInterface {
      *
      * @return mixed
      */
-    public function run( $field, $value, $message = null ) {
-
+    public function run($field, $value, $message = NULL)
+    {
         $this->field   = $field;
         $this->message = $message;
 
-        if ( ! $this->fieldKey || ! $this->fields ) {
-            return false;
+        if (!$this->fieldKey || !$this->fields)
+        {
+            return FALSE;
         }
 
-        if ( $this->fields[ $this->fieldKey ] == $value ) {
-            return true;
+        if ($this->fields[$this->fieldKey] == $value)
+        {
+            return TRUE;
         }
 
-        return false;
+        return FALSE;
     }
 
     /**
@@ -64,12 +66,16 @@ class SameRule implements RuleInterface {
      *
      * @return mixed
      */
-    public function message() {
-        if ( $this->message ) {
+    public function message()
+    {
+        if ($this->message)
+        {
             return $this->message;
         }
-
-        return $this->field . " must be same as " . $this->fieldKey;
+        else
+        {
+            return $this->field.' must be same as '.$this->fieldKey;
+        }
     }
 
     /**
@@ -78,9 +84,9 @@ class SameRule implements RuleInterface {
      * @param $fields
      * @param $fieldKey
      */
-    public function prepareRule( $fields, $fieldKey ) {
+    public function prepareRule($fields, $fieldKey)
+    {
         $this->fields   = $fields;
         $this->fieldKey = $fieldKey;
     }
-
 }

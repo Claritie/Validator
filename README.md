@@ -1,6 +1,6 @@
 # Validator
 
-This library is originally part of Skyfire's PHP framework for validating known as *Validator* service.
+This library is originally part of the Claritie framework for validating known as *Validator*.
 
 ## Requirements
 

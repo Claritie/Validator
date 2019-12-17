@@ -96,7 +96,7 @@ You can also compare a field with another
 ```
 
 ## Installation / Integration:
-Through Skyfire, you can install **Validator** by calling 'Validator' within the load::service() function.
+When using Claritie Beta (Skyfire), you can install **Validator** by calling 'Validator' within the load::service() function.
 ```php
 load::service('Validator');
 ```
